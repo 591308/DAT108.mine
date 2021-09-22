@@ -1,6 +1,5 @@
 package Oppgave2;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Kokk extends Thread{
