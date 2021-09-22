@@ -34,7 +34,7 @@ public class Oppgave1 {
 			}
 
 			public static int beregn(int a, int b, BiFunction<Integer, Integer, Integer> funksjon) {
-				return funksjon.apply(a, b); // funksjon skal implementeres pa variablene vi sendte
+				return funksjon.apply(a, b); // funksjon skal implementeres pa variablene vi sendt
 			}
 
 }
