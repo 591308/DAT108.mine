@@ -1,4 +1,4 @@
-package Oppgave2Updated;
+package Oppgave2;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,7 +13,7 @@ public class Kokk extends Thread{
 		this.navn = navn;
 	}
 
-	int tid = ThreadLocalRandom.current().nextInt(500, 2000);
+	int tid = ThreadLocalRandom.current().nextInt(2000, 6000);
 	
 	public void run(){
 		

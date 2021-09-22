@@ -1,4 +1,4 @@
-package Oppgave2Updated;
+package Oppgave2;
 
 import java.util.Arrays;
 

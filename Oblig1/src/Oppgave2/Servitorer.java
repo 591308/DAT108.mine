@@ -1,4 +1,4 @@
-package Oppgave2Updated;
+package Oppgave2;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,15 +21,15 @@ public class Servitorer extends Thread{
 				Thread.sleep(this.tid);
 			} catch (InterruptedException e) {
 			}
-			synchronized(this.brett) {
+			synchronized(brett) {
 				while(brett.brettet.size() < 1) {
 					System.out.println(navn + " (servitor) vil ta flere burgere, men brettet er full, venter!");
 					try{
-						this.brett.wait();
+						brett.wait();
 					} catch (InterruptedException ie) {}
 				}
 				System.out.println(navn + " (serivtor) tar burger " + brett.fjern() + ". Brett: " + brett.toList());
-				this.brett.notifyAll();
+				brett.notifyAll();
 			}
 		}
 	}
