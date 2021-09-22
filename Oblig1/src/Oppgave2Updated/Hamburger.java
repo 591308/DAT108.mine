@@ -2,13 +2,26 @@ package Oppgave2Updated;
 
 public class Hamburger {
 
-	public int count;
+	public int burgerID;
+	public int burgerCount;
 	
-	public Hamburger(int count) {
-		this.count = count;
+	public Hamburger(int burgerCount) {
+		this.burgerID = burgerCount;
 	}
-	
-	public int getCount() {
-		return count;
+
+	public int getBurgerID() {
+		return burgerID;
+	}
+
+	public void setBurgerID(int burgerID) {
+		this.burgerID = burgerID;
+	}
+
+	public int getBurgerCount() {
+		return burgerCount;
+	}
+
+	public void setBurgerCount(int burgerCount) {
+		this.burgerCount = burgerCount;
 	}
 }

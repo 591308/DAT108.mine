@@ -1,13 +1,12 @@
 package Oppgave2Updated;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Kokk {
+public class Kokk extends Thread{
 
 	private HamburgerBrett brett;
 	private String navn;
-	private int kapasitet = 4;
 	
 	public Kokk(HamburgerBrett brett, String navn) {
 		this.brett = brett;
@@ -16,31 +15,23 @@ public class Kokk {
 
 	int tid = ThreadLocalRandom.current().nextInt(500, 2000);
 	
-	static LinkedList<Integer> burgerKo = new LinkedList<>();
-	
-	public void start(){
-		int brettet = 1;
+	public void run(){
+		
 		while(true) {
 			try {
 				Thread.sleep(tid);
 			} catch (InterruptedException e) {}
-			
 			synchronized(brett) {
-				while(this.burgerKo.size() == kapasitet) {
-					System.out.println(navn + " (cook) wants to add hamburger, but the board is full. Waiting.");
+				while(brett.brettet.size() == 4) {
+					System.out.println(navn + " (kokk) vil legge til flere burgere, men brettet er full, venter!");
 					try {
 						brett.wait();
 					} catch (InterruptedException e) {}
 				}
-				
-				this.burgerKo.add(Integer.valueOf(brettet));
-				brett.count++;
-				System.out.println(navn + " (kokk) legger til burger " + brettet + ". Brett: " + brett.count);
-				brettet++;
+				System.out.println(navn + " (kokk) legger til burger " + brett.leggTil() +  ". Brett: " + brett.toList());
 				brett.notifyAll();
 			}
 		}
 	}
-
 
 }

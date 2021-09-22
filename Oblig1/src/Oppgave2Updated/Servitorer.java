@@ -2,9 +2,8 @@ package Oppgave2Updated;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Servitorer {
+public class Servitorer extends Thread{
 
-	private static final Hamburger burger = null;
 	private HamburgerBrett brett;
 	private String navn;
 	
@@ -13,27 +12,24 @@ public class Servitorer {
 		this.navn = navn;
 	}
 
-	int tid = ThreadLocalRandom.current().nextInt(500, 2000);
-
+	int tid = ThreadLocalRandom.current().nextInt(2000, 6000);
 	
-	public void start() {
-
+	public void run() {
+		
 		while(true) {
 			try {
 				Thread.sleep(this.tid);
 			} catch (InterruptedException e) {
 			}
-			synchronized(brett) {
-				while(Kokk.burgerKo.size() == 0) {
+			synchronized(this.brett) {
+				while(brett.brettet.size() < 1) {
+					System.out.println(navn + " (servitor) vil ta flere burgere, men brettet er full, venter!");
 					try{
-						this.wait();
+						this.brett.wait();
 					} catch (InterruptedException ie) {}
 				}
-				Kokk.burgerKo.removeFirst();
-				brett.count--;
-				brett.fjern();
-				System.out.println(navn + " (kokk) legger til burger " + brett.count + ". Brett: " + brett.count);
-				brett.notifyAll();
+				System.out.println(navn + " (serivtor) tar burger " + brett.fjern() + ". Brett: " + brett.toList());
+				this.brett.notifyAll();
 			}
 		}
 	}

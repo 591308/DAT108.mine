@@ -1,29 +1,36 @@
 package Oppgave2Updated;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 public class HamburgerBrett {
 
 	public int kapasitet;
-	public int count;
 	public Kokk kokk;
-	public Servitorer servitor;
-	public Hamburger burger;
+	public LinkedList<Hamburger> brettet = new LinkedList<>();
 	
 	public HamburgerBrett(int kapasitet) {
 		this.kapasitet = kapasitet;
 	}
-
-	public boolean erFull() {
-		if(kapasitet == count) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	public void leggTil(Hamburger burger) {
-		this.burger = burger;
+	int count = 1;
+	public int leggTil() {
+		Hamburger burger = new Hamburger(count);
+		brettet.add(burger);
+		count++;
+		return burger.getBurgerID();
 	}
 
-	public void fjern() {
-		burger.count--;
+	public int fjern() {
+		int burger = brettet.getFirst().getBurgerID();
+		brettet.removeFirst();
+		return burger;
 	}
+
+	public List<Integer> toList() {
+		return brettet.stream().map(a -> a.getBurgerID()).collect(Collectors.toList());
+	}
+	
+	
 }
