@@ -20,7 +20,7 @@ public class Oppgave3 {
 					new Ansatt("Charlotte", "Bronte", Kjonn.KVINNE, "Stripper", 100000),
 					new Ansatt("Matthew", "Arnold", Kjonn.KVINNE, "Designer", 800001),
 					new Ansatt("Lara", "Croft", Kjonn.KVINNE, "Sjef", 550000),
-					new Ansatt("Sheldon", "Cooper", Kjonn.KVINNE, "Designer", 400000));
+					new Ansatt("Sheldon", "Cooper", Kjonn.KVINNE, "Designerr", 400000));
 			
 			//Oppgave3a
 			
